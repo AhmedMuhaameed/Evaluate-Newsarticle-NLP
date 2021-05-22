@@ -22,7 +22,7 @@ app.use(
 
 app.use(express.static("dist"));
 
-console.log(__dirname);
+// console.log(__dirname);
 
 app.get("/", function (req, res) {
     // res.sendFile('dist/index.html')
@@ -34,7 +34,7 @@ app.listen(8081, function () {
     console.log("Example app listening on port 8081!");
 });
 
-app.post("/add-url", async function  (req, res) {
+app.post("/api-results", async function  (req, res) {
     try{
         const url =req.body.url;
         const APIURL= "https://api.meaningcloud.com/sentiment-2.1"
