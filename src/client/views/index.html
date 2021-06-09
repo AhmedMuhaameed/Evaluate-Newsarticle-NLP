@@ -11,7 +11,7 @@
             <div class="container">
                 <p class='heading'>Please enter url for an article you want to evaluate</p>
                 <section>
-                    <form id="form">
+                    <form id="form" onsubmit="return Client.handleSubmit(event)">
                         <label for="article-url">URL</label>
                         <input
                             id="article-url"
