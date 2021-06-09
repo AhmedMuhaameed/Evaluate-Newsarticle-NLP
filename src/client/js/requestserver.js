@@ -1,14 +1,12 @@
 import axios from "axios";
 import { urlValidation } from "./urlValidation";
 
-const passRequestToserver = async (requestedUrl = "", data = {}) => {
+const passRequestToserver = async (url = "", data = {}) => {
     try {
         const serverResults = await axios({
             method: "POST",
-            requestedUrl,
+            url,
             data,
-            withCredentials: true,
-            credentials: "include",
         });
         return serverResults;
     } catch (err) {
@@ -16,10 +14,10 @@ const passRequestToserver = async (requestedUrl = "", data = {}) => {
     }
 };
 
-function getServerResponse() {
+const getServerResponse =  () => {
     let inputUrl = document.getElementById("article-url").value;
     if (urlValidation(inputUrl)) {
-        passRequestToserver("http://127.0.0.1:8081/api-results", { url: inputUrl }).then((res) => {
+            passRequestToserver("http://localhost:8080/api-results", { url: inputUrl }).then((res) => {
             document.getElementById("agg").innerHTML = `agreement: ${res.data.agreement}`;
             document.getElementById("sub").innerHTML = `subjectivity: ${res.data.subjectivity}`;
             document.getElementById("con").innerHTML = `confidence: ${res.data.confidence}`;

@@ -2,15 +2,15 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const WorkboxPlugin = require('workbox-webpack-plugin');
+const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
     entry: "./src/client/index.js",
     output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'bundle.min.js',
-        libraryTarget: 'var',
-        library: 'Client'
+        path: path.join(__dirname, "dist"),
+        filename: "bundle.min.js",
+        libraryTarget: "var",
+        library: "Client",
     },
     mode: "development",
     devtool: "inline-source-map",
@@ -58,9 +58,8 @@ module.exports = {
             verbose: true,
             cleanStaleWebpackAssets: false,
             protectWebpackAssets: false,
-            cleanAfterEveryBuildPatterns: ['static*.*', '!static1.js'],
+            cleanAfterEveryBuildPatterns: ["static*.*", "!static1.js"],
         }),
         new WorkboxPlugin.GenerateSW(),
-        
     ],
 };
